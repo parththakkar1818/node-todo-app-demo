@@ -1,8 +1,5 @@
 pipeline {
     agent any
-    environment{
-        // you can call your credentials here
-    }
     stages {
         stage('clone code') {
             steps {
