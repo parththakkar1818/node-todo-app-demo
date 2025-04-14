@@ -48,7 +48,7 @@ pipeline {
                 script {
                     // Run the Docker container locally
                     sh """
-                    docker run -d -p 8090:8080 ${IMAGE_NAME}:${DOCKER_TAG}
+                    docker run -d -p 8090:8000 ${IMAGE_NAME}:${DOCKER_TAG}
                     """
                 }
             }
