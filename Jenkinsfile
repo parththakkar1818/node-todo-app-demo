@@ -18,7 +18,7 @@ pipeline {
             steps {
                 // Build Docker image
                 sh """
-                sudo docker build -t ${IMAGE_NAME}:${DOCKER_TAG} .
+                docker build -t ${IMAGE_NAME}:${DOCKER_TAG} .
                 """
             }
         }
@@ -27,7 +27,7 @@ pipeline {
             steps {
                 // Build Docker image
                 sh """
-                sudo docker images .
+                docker images .
                 """
             }
         }
