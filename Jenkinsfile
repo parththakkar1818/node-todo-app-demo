@@ -23,7 +23,7 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image') {
+        stage('check Docker Image') {
             steps {
                 // Build Docker image
                 sh """
