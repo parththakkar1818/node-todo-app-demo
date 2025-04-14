@@ -18,40 +18,20 @@ pipeline {
             steps {
                 // Build Docker image
                 sh """
-                docker build -t ${IMAGE_NAME}:${DOCKER_TAG} .
-                """
-            }
-        }
-        
-        stage('Login to Docker Hub') {
-            steps {
-                // Login to Docker Hub using Jenkins credentials
-                sh """
-                echo ${DOCKER_CREDENTIALS_PSW} | docker login -u ${DOCKER_CREDENTIALS_USR} --password-stdin
+                sudo docker build -t ${IMAGE_NAME}:${DOCKER_TAG} .
                 """
             }
         }
 
-        stage('Push Docker Image') {
+        stage('Build Docker Image') {
             steps {
-                script {
-                    // Push the Docker image to Docker Hub
-                    sh """
-                    docker push ${IMAGE_NAME}:${DOCKER_TAG}
-                    """
-                }
+                // Build Docker image
+                sh """
+                sudo docker images .
+                """
             }
         }
-        
-        stage('Run Docker Container Locally') {
-            steps {
-                script {
-                    // Run the Docker container locally
-                    sh """
-                    docker run -d -p 8080:8080 ${IMAGE_NAME}:${DOCKER_TAG}
-                    """
-                }
-            }
-        }
+
+
     }
 }
